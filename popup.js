@@ -1,6 +1,6 @@
 // popup.js
 const CLIENT_ID = '800012449337-k5ueq834dmiqt1u1ss22mmt5ckabt8pn.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyCVoWWLp37tKXi7ebizRlrXL55C-y7shXI';
+const API_KEY = 'AIzaSyCFzE4YEctifon51NuBtUOWjctMZNwUUVg';
 
 let accessToken = null;
 
