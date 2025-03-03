@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const statusDiv = document.getElementById('status');
     const signInPage = document.getElementById('signInPage');
     const mainPage = document.getElementById('mainPage');
+    const bookmarkList = document.getElementById('bookmarkList');
 
     async function authenticate() {
         return new Promise((resolve, reject) => {
@@ -48,6 +49,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     function showSignInPage() {
         signInPage.style.display = 'block';
         mainPage.style.display = 'none';
+    }
+    
+    function displayBookmarks(bookmarks) {
+        bookmarkList.innerHTML = '';
+        const traverse = (nodes) => {
+            nodes.forEach(node => {
+                if (node.url) {
+                    const li = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = node.url;
+                    link.target = '_blank';
+                    link.textContent = node.title || node.url;
+                    li.appendChild(link);
+                    bookmarkList.appendChild(li);
+                }
+                if (node.children) {
+                    traverse(node.children);
+                }
+            });
+        };
+        traverse(bookmarks);
     }
 
     async function uploadToDrive(bookmarks) {
@@ -98,7 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
 
                 const bookmarks = await fileResponse.json();
-                console.log('Downloaded:', bookmarks);
+                displayBookmarks(bookmarks);
                 statusDiv.innerText = 'Bookmarks loaded!';
             } else {
                 statusDiv.innerText = 'No bookmark file found.';
@@ -109,24 +131,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    async function signIn() {
-        try {
-            await authenticate();
-        } catch (error) {
-            statusDiv.innerText = 'Sign-in failed';
-            console.error('Sign-in error:', error);
-        }
-    }
-
-    function signOut() {
+    signInButton.addEventListener('click', authenticate);
+    signOutButton.addEventListener('click', () => {
         accessToken = null;
         chrome.storage.local.remove('accessToken');
         showSignInPage();
-        statusDiv.innerText = 'Signed out successfully';
-    }
-
-    signInButton.addEventListener('click', signIn);
-    signOutButton.addEventListener('click', signOut);
+    });
 
     saveButton.addEventListener('click', () => {
         chrome.bookmarks.getTree(uploadToDrive);
