@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Anywhere Bookmark",
+    "version": "1.0",
+    "permissions": ["storage", "identity", "tabs", "bookmarks"],
+    "oauth2": {
+      "client_id": "800012449337-k5ueq834dmiqt1u1ss22mmt5ckabt8pn.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/drive.appdata"
+      ]
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Anywhere Bookmark</title>
+    <script src="popup.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+        button { margin: 10px; padding: 10px; cursor: pointer; }
+        h1 { color: #4A90E2; }
+    </style>
+</head>
+<body>
+    <h1>Anywhere Bookmark</h1>
+    <div id="signInPage">
+        <button id="signIn">&#128274; Sign In with Google</button>
+    </div>
+    <div id="mainPage" style="display: none;">
+        <button id="save">&#128190; Save Bookmarks</button>
+        <button id="load">&#128193; Load Bookmarks</button>
+        <button id="signOut">&#128682; Sign Out</button>
+    </div>
+    <div id="status"></div>
+</body>
+</html>
