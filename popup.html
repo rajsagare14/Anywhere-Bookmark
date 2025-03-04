@@ -4,9 +4,21 @@
     <title>Anywhere Bookmark</title>
     <script src="popup.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
-        button { margin: 10px; padding: 10px; cursor: pointer; }
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; background: #f9f9f9; color: #333; }
+        button { margin: 10px; padding: 12px 20px; cursor: pointer; border: none; border-radius: 8px; font-size: 16px; transition: background 0.3s; }
         h1 { color: #4A90E2; }
+        ul { list-style-type: none; padding: 0; max-height: 300px; overflow-y: auto; text-align: left; }
+        li { margin: 5px 0; padding: 5px; background: #ffffff; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        a { text-decoration: none; color: #4A90E2; }
+        #signIn { background: #4285F4; color: white; }
+        #signIn:hover { background: #357ae8; }
+        #save { background: #34A853; color: white; }
+        #save:hover { background: #2b8b46; }
+        #load { background: #FBBC05; color: white; }
+        #load:hover { background: #e0a800; }
+        #signOut { background: #EA4335; color: white; }
+        #signOut:hover { background: #d93025; }
+        #status { margin-top: 20px; font-size: 14px; color: #555; }
     </style>
 </head>
 <body>
